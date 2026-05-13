@@ -14,14 +14,12 @@ const mobileMenu = document.getElementById('mobile-menu');
 menuBtn.addEventListener('click', () => {
   mobileMenu.classList.toggle('hidden');
 });
-
-// Close mobile menu on link click
 mobileMenu.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
 });
 
-// Scroll-triggered reveal
-const reveals = document.querySelectorAll('.reveal');
+// Scroll-triggered reveal from left
+const reveals = document.querySelectorAll('.reveal-left');
 const observer = new IntersectionObserver(
   entries => {
     entries.forEach(entry => {
@@ -35,7 +33,7 @@ const observer = new IntersectionObserver(
 );
 reveals.forEach(el => observer.observe(el));
 
-// Active nav link highlight on scroll
+// Active nav link highlight
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-link');
 window.addEventListener('scroll', () => {
@@ -46,9 +44,9 @@ window.addEventListener('scroll', () => {
     }
   });
   navLinks.forEach(link => {
-    link.classList.remove('text-cyan-400');
+    link.classList.remove('text-white');
     if (link.getAttribute('href') === `#${current}`) {
-      link.classList.add('text-cyan-400');
+      link.classList.add('text-white');
     }
   });
 });
